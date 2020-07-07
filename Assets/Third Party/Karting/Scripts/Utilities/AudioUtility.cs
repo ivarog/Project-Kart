@@ -24,9 +24,9 @@ public class AudioUtility
         source.minDistance = rolloffDistanceMin;
         source.Play();
 
-        source.outputAudioMixerGroup = GetAudioGroup(audioGroup);
+        // source.outputAudioMixerGroup = GetAudioGroup(audioGroup);
 
-        m_AudioManager.EnsureSFXDestruction(source);
+        // m_AudioManager.EnsureSFXDestruction(source);
     }
 
     public static AudioMixerGroup GetAudioGroup(AudioGroups group)

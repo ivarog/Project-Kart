@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WayPoint : MonoBehaviour
+public class Goal : MonoBehaviour
 {
     private MyGameManager myGameManager;
 
@@ -12,8 +12,9 @@ public class WayPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player"){
-            myGameManager.AddWayPointReached();
-            Destroy(gameObject);
+            if( myGameManager.wayPointsReached >= myGameManager.wayPointsNumber){
+                myGameManager.goalReached = true;
+            }
         }
     }
 }

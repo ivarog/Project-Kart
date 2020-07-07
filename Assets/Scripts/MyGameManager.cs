@@ -14,10 +14,11 @@ public class MyGameManager : MonoBehaviour
     [Tooltip("Reloj de la cuenta regresiva")]
     [SerializeField] ClockTimer clock;
 
-    private int wayPointsNumber;
-    private int wayPointsReached;
 
     //Variables para saber si el jugador ha alcanzado la meta
+    public int wayPointsNumber {get; set;}
+    public int wayPointsReached {get; set;}
+    public bool goalReached {get; set;}
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class MyGameManager : MonoBehaviour
         clock.ActiveClock = true;
         StartCoroutine(HideBanner(3f));
         wayPointsNumber = FindObjectsOfType<WayPoint>().Length;
+        goalReached = false;
     }   
 
     // Update is called once per frame
@@ -34,6 +36,11 @@ public class MyGameManager : MonoBehaviour
             bannerMessage.text = "Time Out";
             banner.SetActive(true);
             StartCoroutine(LoadNextScene(4f, "LoseScene"));
+        }
+        else if(goalReached){
+            bannerMessage.text = "Goal Reached";
+            banner.SetActive(true);
+            StartCoroutine(LoadNextScene(4f, "WinScene"));
         }
     }
 

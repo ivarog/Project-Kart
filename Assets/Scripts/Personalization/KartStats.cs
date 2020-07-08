@@ -27,6 +27,6 @@ public class KartStats : MonoBehaviour
         PlayerData.SpeedKart = velocitySlider.value * 20;
         PlayerData.AcelerationKart = acelerationSlider.value * 30;
         PlayerData.DesacelerationKart = desacelerationSlider.value * 10;
-        SceneManager.LoadScene("TimeTrial");
+        SceneManager.LoadScene("Time Trial");
     }
 }

@@ -12,6 +12,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject kart;
     
     private SkinnedMeshRenderer kartMesh;
+    private GameObject[] wheelArray;
+
+    private void Start() {
+        wheelArray = GameObject.FindGameObjectsWithTag("Wheel");
+    }
 
     private void Update() {
         kart.transform.Rotate(0f, 5f * Time.deltaTime, 0f);
@@ -19,6 +24,13 @@ public class LevelManager : MonoBehaviour
 
     public void ChangeColor(){
         kartMaterial.color = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color;
+    }
+
+    public void ChangeWheel(){
+        foreach(GameObject wheel in wheelArray)
+        {
+            wheel.GetComponent<MeshFilter>().mesh = EventSystem.current.currentSelectedGameObject.GetComponent<WheelButton>().wheelModel;
+        }
     }
 }
 

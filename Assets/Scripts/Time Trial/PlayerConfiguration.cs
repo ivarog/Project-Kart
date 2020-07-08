@@ -13,16 +13,24 @@ public class PlayerConfiguration : MonoBehaviour
     [SerializeField] Material kartMaterial;
     private GameObject[] wheelArray;
 
+    //Default values
+    float speedDefault = 2f;
+    float acelerationDefault = 3f;
+    float dsacelerationDefault = 1f;
+    [Tooltip("Default wheel")]
+    [SerializeField]  Mesh defaultWheel;
 
+    //Inicializar las stats del auto de acuerdo a las configuraciones guardadas
     private void Start() {
-        arcadeKart.baseStats.TopSpeed = PlayerData.SpeedKart;
-        arcadeKart.baseStats.Acceleration = PlayerData.AcelerationKart;
-        arcadeKart.baseStats.ReverseAcceleration = PlayerData.DesacelerationKart;
-        kartMaterial.color = PlayerData.ColorKart;
+        arcadeKart.baseStats.TopSpeed = PlayerData.SpeedKart <= 0f ? speedDefault : PlayerData.SpeedKart;
+        arcadeKart.baseStats.Acceleration = PlayerData.AcelerationKart <= 0f ? acelerationDefault : PlayerData.AcelerationKart;
+        arcadeKart.baseStats.ReverseAcceleration = PlayerData.DesacelerationKart <= 0f ? dsacelerationDefault : PlayerData.DesacelerationKart;
+        kartMaterial.color = PlayerData.ColorKart == null ? Color.blue : PlayerData.ColorKart;
         wheelArray = GameObject.FindGameObjectsWithTag("Wheel");
+        Mesh wheelMesh = PlayerData.MeshKart == null ? defaultWheel : PlayerData.MeshKart;
         foreach(GameObject wheel in wheelArray)
         {
-            wheel.GetComponent<MeshFilter>().mesh = PlayerData.MeshKart;
+            wheel.GetComponent<MeshFilter>().mesh = wheelMesh;
         }
     }
 }

@@ -1,6 +1,6 @@
-# Project Title
+# Kart Time Trial
 
-Kart Time Trial
+Una carrera contra reloj
 
 ## Getting Started
 
@@ -8,11 +8,11 @@ Para poder correr el proyecto es necesario contar con la versión 2019.4 LTS de 
 
 Las escenas que contienen el juego son:
 
-1.- IntroMenu
-2.- Personalization
-3.- Time Trial
-4.- WinScene
-5.- LoseScene
+* IntroMenu
+* Personalization
+* Time Trial
+* WinScene
+* LoseScene
 
 Pero para poder inicializar el juego desde la pantalla inicial se recomienda ejecutar desde IntroMenu
 

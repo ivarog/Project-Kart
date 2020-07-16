@@ -11,6 +11,7 @@ public class Goal : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        //if the player has touched the checkpoints and after the goal the race has finished
         if(other.gameObject.tag == "Player"){
             if( myGameManager.wayPointsReached >= myGameManager.wayPointsNumber){
                 myGameManager.goalReached = true;

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class ClockTimer : MonoBehaviour
 {
-    //Variable utilizada para saber si el reloj debe comenzar la cuenta regresiva
+    //Variable used to know if the clock should start the countdown
     [HideInInspector] public bool ActiveClock {set; get;}
 
-    [Tooltip("Tiempo que va a tener el jugador para recorrer la pista en segundos")]
+    [Tooltip("Time the player will have to travel the track in seconds")]
     [SerializeField] float seconds = 60f;
-    //Varable que indica si el tiempo del juego ha finalizado
+    //Variable that indicates if the game time has ended
     [HideInInspector] public bool TimeOut {set; get;}
-    //Mustra el tiempo en el Canvas
+    //Show time on Canvas
     private Text clock;
 
     void Start()
@@ -28,7 +28,7 @@ public class ClockTimer : MonoBehaviour
         clock.text = seconds.ToString();
     }
 
-    //Se realiza la cuenta regresiva del reloj en caso de que sea activada por el Gamemanager
+    //The clock is counted down in case it is activated by the Gamemanager
     void CountDown(){
         if(ActiveClock ){
             seconds -= Time.deltaTime;
@@ -39,6 +39,8 @@ public class ClockTimer : MonoBehaviour
         }
     }
 
+    //Add time to the countdown
+    //@param timeAmount the mount of time to add when you touch an item
     public void AddTime(float timeAmount){
         seconds+=timeAmount;
     }

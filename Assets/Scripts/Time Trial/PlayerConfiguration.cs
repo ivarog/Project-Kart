@@ -5,22 +5,21 @@ using KartGame.KartSystems;
 
 public class PlayerConfiguration : MonoBehaviour
 {
-    [Tooltip("Script para las configuraciones de estadisticas del auto")]
+    [Tooltip("Script for car statistics settings")]
     [SerializeField] ArcadeKart arcadeKart;
-    [Tooltip("Carrito a modificar")]
+    [Tooltip("Kart to modify")]
     [SerializeField] GameObject kart;
-    [Tooltip("Material que utilizará el carrito")]
+    [Tooltip("Material to be used by the cart")]
     [SerializeField] Material kartMaterial;
     private GameObject[] wheelArray;
 
-    //Default values
+    //default values ​​if not provided
     float speedDefault = 2f;
     float acelerationDefault = 3f;
     float dsacelerationDefault = 1f;
-    [Tooltip("Default wheel")]
-    [SerializeField]  Mesh defaultWheel;
+    [Tooltip("Default wheel")] [SerializeField]  Mesh defaultWheel;
 
-    //Inicializar las stats del auto de acuerdo a las configuraciones guardadas
+    //Initialize the car stats according to the saved settings
     private void Start() {
         arcadeKart.baseStats.TopSpeed = PlayerData.SpeedKart <= 0f ? speedDefault : PlayerData.SpeedKart;
         arcadeKart.baseStats.Acceleration = PlayerData.AcelerationKart <= 0f ? acelerationDefault : PlayerData.AcelerationKart;

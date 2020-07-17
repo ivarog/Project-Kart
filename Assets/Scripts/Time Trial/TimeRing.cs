@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TimeRing : MonoBehaviour
 {
-    //Reloj de la cuenta regresiva
+    //Countdown Clock
     ClockTimer clock;
 
-    //Particle system
+    //Particle system when iten is grabed
     [SerializeField] ParticleSystem confeti;
 
     private void Start() {
@@ -20,6 +20,7 @@ public class TimeRing : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        //If object is player then add 5 seconds, destroy item and throw confetti
         if(other.gameObject.tag == "Player"){
             clock.AddTime(5);
             Destroy(gameObject);

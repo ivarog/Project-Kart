@@ -10,6 +10,7 @@ public class WayPoint : MonoBehaviour
         myGameManager = GameObject.FindObjectOfType<MyGameManager>();
     }
 
+    //If object in trigger is player then add waypoint count and destroy the actual waypoint
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player"){
             myGameManager.AddWayPointReached();

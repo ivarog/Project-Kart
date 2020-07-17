@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
-    [Tooltip("Material que utilizará el carrito")]
+    [Tooltip("Kart Material")]
     [SerializeField] Material kartMaterial;
-    [Tooltip("Carrito a modificar")]
+    [Tooltip("Kart to modify")]
     [SerializeField] GameObject kart;
     [Tooltip("Canvas Configuration")]
     [SerializeField] GameObject canvasConfiguration;
@@ -27,12 +27,12 @@ public class LevelManager : MonoBehaviour
         kart.transform.Rotate(0f, 5f * Time.deltaTime, 0f);
     }
 
-    //Cambiar color al dar click en el boton en pantalla
+    /*Called when in the GUI you change the color of the kart*/
     public void ChangeColor(){
         kartMaterial.color = EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color;
     }
 
-    //Cambiar llanta al dar click en el boton en pantalla
+    /*Called when in the GUI you change the wheel of the kart*/
     public void ChangeWheel(){
         selectedMesh = EventSystem.current.currentSelectedGameObject.GetComponent<WheelButton>().wheelModel;
         foreach(GameObject wheel in wheelArray)
@@ -41,6 +41,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /*When click on button OK the configuration saves in static class Player Data*/
     public void SaveConfiguration(){
         PlayerData.ColorKart = kartMaterial.color;
         PlayerData.MeshKart = selectedMesh;
